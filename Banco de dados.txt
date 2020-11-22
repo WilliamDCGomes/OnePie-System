@@ -1,0 +1,156 @@
+
+drop database dbprometheus;
+
+create database dbprometheus;
+
+use dbprometheus;
+
+CREATE TABLE exec_of2 (
+  OS varchar(20) NOT NULL,
+  SERVIÇO varchar(15) NOT NULL,
+  HORA_INICIAL varchar(15) NOT NULL,
+  HORA_FINAL varchar(15) NOT NULL,
+  DURAÇÃO varchar(15) NOT NULL,
+  OBSERVAÇÕES varchar(750) DEFAULT NULL,
+  TIPO_DE_ORDEM varchar(20) NOT NULL,
+  MECÂNICO varchar(20) NOT NULL,
+  DIA varchar(20) NOT NULL,
+  HINICIAL varchar(20) NOT NULL,
+  MINICIAL varchar(20) NOT NULL,
+  HORAFINAL varchar(20) NOT NULL,
+  MINIFINAL varchar(20) NOT NULL,
+  DIAS int(11) NOT NULL,
+  MÊS int(11) NOT NULL,
+  ANO int(11) NOT NULL,
+  HISTÓRICO varchar(750) NOT NULL,
+  COMP int(11) NOT NULL,
+  PRIMARY KEY (OS),
+  UNIQUE KEY OS (OS)
+);
+
+CREATE TABLE mecanicos (
+  nome_mecanico varchar(20) NOT NULL,
+  situacao varchar(15) NOT NULL,
+  PRIMARY KEY (nome_mecanico)
+);
+
+CREATE TABLE tb_pecas_es2 (
+  NOME varchar(50) NOT NULL,
+  CÓDIGO varchar(20) NOT NULL,
+  CAIXA int(11) NOT NULL,
+  LOCALIZAÇÃO varchar(40) NOT NULL,
+  MARCA varchar(20) NOT NULL,
+  QUANTIDADE int(11) NOT NULL,
+  CUSTO varchar(20) NOT NULL,
+  PREÇO varchar(20) NOT NULL,
+  OBSERVAÇÕES varchar(500) DEFAULT NULL,
+  REQUISIÇÃO varchar(10) NOT NULL,
+  QUANTIDADE_REQUISITADA int(11) NOT NULL,
+  QUANTIDADE_DE_VENDAS int(11) NOT NULL,
+  LUCRO varchar(20) NOT NULL,
+  PRIMARY KEY (CÓDIGO),
+  UNIQUE KEY CÓDIGO (CÓDIGO)
+);
+
+CREATE TABLE tb_pecas_ml (
+  nome_pecas_ml varchar(50) NOT NULL,
+  cod_pecas_ml varchar(20) NOT NULL,
+  preco_custo_ml varchar(20) NOT NULL,
+  preco_venda_ml varchar(20) NOT NULL,
+  marca_ml varchar(15) NOT NULL,
+  porcentagem_ml int(11) NOT NULL,
+  qnt_disponivel_ml int(11) NOT NULL,
+  qnt_minima_ml int(11) NOT NULL,
+  qnt_recomendada_ml int(11) NOT NULL,
+  obs_pecas_ml varchar(500) DEFAULT NULL,
+  localizacao_ml varchar(15) NOT NULL,
+  pausado_pecas_ml varchar(15) NOT NULL,
+  requisicao_pecas_ml varchar(15) NOT NULL,
+  qnt_requisicao_pecas_ml int(11) NOT NULL,
+  qnt_de_venda_pecas_ml int(11) NOT NULL,
+  lucro varchar(20) NOT NULL,
+  requisicao_automatica varchar(10) DEFAULT NULL,
+  ativo_requisicao varchar(10) DEFAULT NULL,
+  aguardando varchar(10) DEFAULT NULL,
+  qnt_chegou int(11) NOT NULL,
+  PRIMARY KEY (nome_pecas_ml),
+  UNIQUE KEY cod_pecas_ml (cod_pecas_ml)
+);
+
+CREATE TABLE tb_pecas_ml2 (
+  NOME varchar(50) NOT NULL,
+  CÓDIGO varchar(20) NOT NULL,
+  PREÇO_DE_CUSTO varchar(20) NOT NULL,
+  PREÇO varchar(20) NOT NULL,
+  MARCA varchar(15) NOT NULL,
+  PORCENTAGEM int(11) NOT NULL,
+  QUANTIDADE int(11) NOT NULL,
+  QUANTIDADE_MINIMA int(11) NOT NULL,
+  QUANTIDADE_RECOMENDADA int(11) NOT NULL,
+  OBSERVAÇÕES varchar(500) DEFAULT NULL,
+  LOCALIZAÇÃO varchar(15) NOT NULL,
+  PAUSADO varchar(15) NOT NULL,
+  REQUISIÇÃO varchar(15) NOT NULL,
+  QUANTIDADE_DE_REQUISIÇÃO int(11) NOT NULL,
+  QUANTIDADE_DE_VENDAS int(11) NOT NULL,
+  LUCRO varchar(20) NOT NULL,
+  REQUISIÇÃO_AUTOMATICA varchar(10) DEFAULT NULL,
+  STATUS_DA_REQUISIÇÃO varchar(10) DEFAULT NULL,
+  AGUARDANDO_PEÇAS varchar(10) DEFAULT NULL,
+  QUANTIDADE_PENDENTE int(11) NOT NULL,
+  OS varchar(10) DEFAULT NULL,
+  LINK varchar(200) default null,
+  PRIMARY KEY (NOME),
+  UNIQUE KEY CÓDIGO (CÓDIGO)
+);
+
+CREATE TABLE tbusuarios (
+  nome_user varchar(20) NOT NULL,
+  senha_user varchar(20) NOT NULL,
+  nivel_de_acesso int(11) NOT NULL,
+  acesso_permitido varchar(25) NOT NULL,
+  sexo varchar(10) NOT NULL,
+  PRIMARY KEY (nome_user),
+  UNIQUE KEY nome_user (nome_user)
+);
+
+CREATE TABLE tbusuarios2 (
+  NOME varchar(20) NOT NULL,
+  SENHA varchar(20) NOT NULL,
+  NIVEL int(11) NOT NULL,
+  ACESSO_PERMITIDO varchar(25) NOT NULL,
+  SEXO varchar(10) NOT NULL,
+  status varchar(10) default "OFFLINE",
+  PRIMARY KEY (NOME),
+  UNIQUE KEY NOME (NOME)
+);
+
+CREATE TABLE vendas_ml(
+  CÓDIGO varchar(50) NOT NULL,
+  DATA varchar(20) NOT NULL,
+  QUANTIDADE_VENDIDA int(11) NOT NULL,
+  NOME varchar(50) NOT NULL,
+  PREÇO varchar(15) NOT NULL,
+  PORCENTAGEM varchar(11) NOT NULL,
+  TARIFA_ML varchar(11) NOT NULL,
+  FRETE varchar(11) NOT NULL,
+  VALOR_LÍQUIDO_DO_ML varchar(11) NOT NULL,
+  CUSTO varchar(15) NOT NULL,
+  LUCRO varchar(15) NOT NULL,
+  CÓDIGO_DO_CLIENTE varchar(50),
+  OBSERVAÇÕES varchar(500) DEFAULT NULL,
+  DEVOLVIDO varchar(10),
+  PRIMARY KEY (CÓDIGO_DO_CLIENTE)
+);
+
+
+create table mantemData(
+	id int(11) NOT NULL,
+    dia varchar(2),
+    mes varchar(2),
+    ano varchar(2),
+    PRIMARY KEY (id)
+);
+
+
+
